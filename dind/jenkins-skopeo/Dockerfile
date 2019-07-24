@@ -31,8 +31,12 @@ RUN chown -R 1001:0 $HOME && \
 #RUN yum install -y skopeo
 COPY /libostree-1.so.1 /usr/lib64/
 COPY /libostree-1.so.1.0.0 /usr/lib64/
+COPY /libarchive.so.13 /usr/lib64/
+COPY /liblzo2.so.2 /usr/lib64/
+RUN chmod +x /usr/lib64/libarchive.so.13
 RUN chmod +x /usr/lib64/libostree-1.so.1.0.0
 RUN chmod +x /usr/lib64/libostree-1.so.1
+RUN chmod +x /usr/lib64/liblzo2.so.2
 RUN chmod +x /usr/bin/skopeo
 
 USER 1001
