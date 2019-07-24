@@ -15,7 +15,7 @@ LABEL com.redhat.component="jenkins-slave-skopeo-rhel7" \
 
 USER root
 
-ENV SKOPEO_BIN=https://github.com/sabre1041/ocp-support-resources/blob/master/skopeo/bin/skopeo?raw=true
+#ENV SKOPEO_BIN=https://github.com/sabre1041/ocp-support-resources/blob/master/skopeo/bin/skopeo?raw=true
 
 USER root
 
@@ -24,10 +24,10 @@ COPY /policy.json /etc/containers/
 
 RUN chown -R 1001:0 $HOME && \
     chmod -R g+rw $HOME && \
-    curl -L -o /usr/bin/skopeo $SKOPEO_BIN && \
     chown -R 1001:0 /etc/containers && \
     chmod -R g+rw /etc/containers
-    
+RUN yum install -y skopeo
+#curl -L -o /usr/bin/skopeo $SKOPEO_BIN && 
 RUN chmod +x /usr/bin/skopeo
 
 USER 1001
