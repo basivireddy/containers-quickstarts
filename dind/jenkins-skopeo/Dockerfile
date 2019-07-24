@@ -7,4 +7,3 @@ USER root
 RUN yum -y install skopeo
 
 USER 1001
-© 2019 GitHub, Inc.
